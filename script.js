@@ -42,6 +42,17 @@
 // 3. Uses fetch() at the modified endpoint
 // 4. Using the chosen approach (promise chaining or async/await), convert the response to json and return the data in its entirety
 
+async function getCatFacts(num) {
+    let promisedCats = await fetch("https://catfact.ninja/facts?limit=" + num);
+    return promisedCats.json();
+}
 
+// function getCatFacts(num) {
+//     return fetch("https://catfact.ninja/facts?limit=" + num).then(promisedCats => promisedCats.json());
+// }
+
+// I like the async/await version better. Strikes a good balance between compact and readable.
+// I get the sense that the "return promisedCats.json()" line is bad practice somehow...
+// It should be fine though since promisedCats is settled as a resolved promise, right?
 
 //END OF ASSIGNMENT
